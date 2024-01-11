@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>add Department</title>
+    <link rel="stylesheet" href="/css/form.css">
+</head>
+
+<body>
+    <div class="adddepartment">
+        <form action="/admin/deptdata" method="post" class="product-form">
+            <div class="nice-form-group">
+                <label for="buildingname">Building Name</label>
+                <input type="text" name="buildingname" oninput="this.value = this.value.toUpperCase()"
+                    placeholder="Enter Your name" required>
+            </div>
+            <div class="nice-form-group">
+                <label for="name">Name</label>
+                <input type="text" name="name" oninput="this.value = this.value.toUpperCase()"
+                    placeholder="Enter Your name" required>
+            </div>
+            <div class="nice-form-group">
+                <label for="mobileno">Mobile No</label>
+                <input type="tel" name="mobileno" class="icon-left" placeholder="Your Phone Number" pattern="[0-9]{10}"
+                    required>
+            </div>
+            <div class="nice-form-group">
+                <label for="email">Email</label>
+                <input type="email" name="email" class="icon-left" placeholder="www.xyz.com" required>
+            </div>
+            <div class="nice-form-group">
+                <label for="url">Url</label>
+                <input type="url" name="url" placeholder="www.google.com" value="" class="icon-left" />
+            </div>
+            <div class="nice-form-group">
+                <label for="Address">Address</label>
+                <textarea rows="5" value="" name="address" placeholder="Enter adddress"></textarea>
+            </div>
+            <div class="nice-form-group">
+                <label for="name_location">Department Preson Name</label>
+                <input type="text" name="name_location" oninput="this.value = this.value.toUpperCase()"
+                    placeholder="Enter Your name" required>
+            </div>
+            <div class="nice-form-group">
+                <label for="mobileno">Department Mobile No</label>
+                <input type="tel" name="mobileno_location" class="icon-left" placeholder="Your Phone Number"
+                    pattern="[0-9]{10}" required>
+            </div>
+            <div class="nice-form-group">
+                <label for="opentime">OpeningTime</label>
+                <input type="time" name="openingtime" value="10:30" />
+            </div>
+            <div class="nice-form-group">
+                <label>ClosingTime</label>
+                <input type="time" name="closingtime" value="17:30" />
+            </div>
+            <button type="submit">Add Department</button>
+        </form>
+    </div>
+</body>
+
+</html>

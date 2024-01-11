@@ -1,0 +1,30 @@
+.main-container {
+    display: grid;
+    grid-template-columns: auto auto auto;
+}
+
+.options {
+    align-self: center;
+}
+
+.options button {
+    padding: 5rem;
+}
+h1{
+    text-align: center;
+    margin-top: 1.5rem;
+    font-size: 2rem;
+}
+
+@media (max-width:720px) {
+    .main-container {
+        grid-gap:1rem;
+        grid-template-columns: auto auto;
+    }
+}
+@media (max-width:520px) {
+    .main-container {
+        grid-gap:1rem;
+        grid-template-columns: auto ;
+    }
+}

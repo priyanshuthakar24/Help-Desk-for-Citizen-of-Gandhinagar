@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dept info</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" />
+    <link rel="stylesheet" href="/css/collaps.css">
+    <link rel="stylesheet" href="/css/index.css">
+</head>
+
+<body>
+
+    <div class="data">
+        <h2>
+            <%= deptinfo.name%>
+        </h2>
+        <h3>
+            mobile no:<%= deptinfo.mobileno %>
+        </h3>
+        <hr>
+        <div class="main-container">
+            <% for( let key of deptinfo.locations) { %>
+                <h3>
+                    <div class="options">
+                        location :<%= key.address%> <br> <br>
+                            Personname:<%=key.personname%> <br><br>
+                                Department contact:<%=key.mobilenolocation %> <br><br>
+                                    opening time:<%=key.opentime%> <br><br>
+                                        closing time:<%=key.closetime%> <br><br>
+                                            <hr>
+                    </div>
+                </h3>
+                <%}%>
+        </div>
+    </div>
+    <div>
+        <h1>અપના પ્રશ્નો:-</h1>
+        <% for( let keydata of deptinfo.query){%>
+            <section class="accordion">
+                <input type="checkbox" name="collapse" id="handle1" checked="checked">
+                <h2 class="handle">
+                    <label for="handle1">
+                        <%= keydata.question %>
+                    </label>
+
+                </h2>
+                <div class="content">
+                    <p><strong>
+                            <%= keydata.solution%>
+                        </strong></p>
+                </div>
+            </section>
+
+            <%}%>
+    </div>
+</body>
+
+</html>
