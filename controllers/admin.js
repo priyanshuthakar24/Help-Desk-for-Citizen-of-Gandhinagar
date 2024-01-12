@@ -61,8 +61,18 @@ exports.postsolution = (req, res, next) => {
     const answer = req.body.answer;
 
     Dept.findOne({ email: email }).then(data => {
-        const updatdata = [...data.query]
-        updatdata.push({ question: question, solution: answer })
+        let updatdata = [...data.query]
+        // console.log(updatdata)
+        if (updatdata.length === 0) {
+            const incrementid = 1
+            updatdata.push({ question: question, solution: answer, id: incrementid })
+            // console.log(incrementid)
+        } else {
+            const incrementid = updatdata[updatdata.length - 1].id + 1
+            // console.log(incrementid)
+            updatdata.push({ question: question, solution: answer, id: incrementid })
+        }
+        // console.log(updatdata.length);
         data.query = updatdata;
         return data.save();
     }).then(result => {
@@ -73,3 +83,39 @@ exports.postsolution = (req, res, next) => {
         console.log(err);
     });
 }
+
+exports.getattachment = (req, res, next) => {
+    res.render('admin/attachment')
+}
+
+exports.postattachment = (req, res, next) => {
+    const email = req.body.email;
+    const id = req.body.attachmentid;
+    const attachmentname = req.body.attachmentname;
+    const attachmentlink = req.body.attachmentlink;
+
+    Dept.findOne({ email: email }).then(data => {
+        const updatdata = [...data.query]
+        updatdata[id - 1].attachment.push({ attachmentname: attachmentname, attachmentlink: attachmentlink })
+        console.log(updatdata);
+        data.query = updatdata
+        return data.save();
+
+    }).then(result => {
+        console.log(result);
+        console.log('done sucessfully');
+        res.redirect('/admin/home');
+    }).catch(err => {
+        console.log(err);
+    })
+}
+
+
+// logic for add file in arry in attachment section
+// const qesdata = updatdata.filter(item => {
+//     return item.id.toString() === id.toString();
+// })
+// const olddata = qesdata[0].attachment
+// const newdata = qesdata[0]
+// updatdata[id-1]=newdata;
+// console.log(olddata);

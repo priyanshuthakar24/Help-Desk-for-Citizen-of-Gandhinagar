@@ -48,6 +48,11 @@ const departmentschema = new Schema({
 
     }],
     query: [{
+        id: {
+            type: Number,
+            default: 0
+
+        },
         question: {
             type: String,
             required: true
@@ -56,9 +61,14 @@ const departmentschema = new Schema({
             type: String,
             required: true
         },
-        attachment: {
-            type: String
-        }
+        attachment: [{
+            attachmentname: {
+                type: String,
+            },
+            attachmentlink: {
+                type: String,
+            }
+        }]
     }]
 }, { timestamps: true, })
 

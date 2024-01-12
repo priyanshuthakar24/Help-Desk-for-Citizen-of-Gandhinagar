@@ -11,4 +11,6 @@ router.get('/addlocation', admincontroller.getaddlocation);
 router.post('/locationdata', admincontroller.postdeptdata);
 router.get('/addsolution', admincontroller.getsolution);
 router.post('/addsolution', admincontroller.postsolution)
+router.get('/addattachment', admincontroller.getattachment);
+router.post('/addattachment', admincontroller.postattachment);
 module.exports = router;

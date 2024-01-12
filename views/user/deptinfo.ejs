@@ -19,6 +19,14 @@
         <h3>
             mobile no:<%= deptinfo.mobileno %>
         </h3>
+        <h3>
+            Email:<%= deptinfo.email %>
+        </h3>
+        <h3>
+            Url: <a href="<%= deptinfo.url %>">
+                <%= deptinfo.url %>
+            </a>
+        </h3>
         <hr>
         <div class="main-container">
             <% for( let key of deptinfo.locations) { %>
@@ -50,9 +58,17 @@
                     <p><strong>
                             <%= keydata.solution%>
                         </strong></p>
+                    <% for(let keyvalue of keydata.attachment){%>
+                        <p>
+                            <a href="<%= keyvalue.attachmentlink %>" target="_blank">
+                                <i class="fa-regular fa-file-pdf">
+                                    <%= keyvalue.attachmentname %>
+                                </i>
+                            </a>
+                        </p>
+                        <% } %>
                 </div>
             </section>
-
             <%}%>
     </div>
 </body>

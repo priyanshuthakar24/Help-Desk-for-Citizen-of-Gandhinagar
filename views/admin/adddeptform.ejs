@@ -13,8 +13,13 @@
         <form action="/admin/deptdata" method="post" class="product-form">
             <div class="nice-form-group">
                 <label for="buildingname">Building Name</label>
-                <input type="text" name="buildingname" oninput="this.value = this.value.toUpperCase()"
-                    placeholder="Enter Your name" required>
+                <select name="buildingname" id="">
+                    <option value="GMC">Gmc</option>
+                    <option value="karmyogibhavan">KarmYogi bhavan</option>
+                    <option value="Sachivaly">Sachivaly</option>
+                </select>
+                <!-- <input type="text" name="buildingname" oninput="this.value = this.value.toUpperCase()"
+                    placeholder="Enter Your name" required> -->
             </div>
             <div class="nice-form-group">
                 <label for="name">Name</label>

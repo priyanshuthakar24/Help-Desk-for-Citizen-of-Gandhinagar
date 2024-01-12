@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attachment</title>
+    <link rel="stylesheet" href="/css/form.css">
+    <link rel="stylesheet" href="/css/index.css">
+</head>
+
+<body>
+    <h1>Attachment for questions</h1>
+    <form action="/admin/addattachment" method="post" class="product-form">
+        <div class="nice-form-group">
+            <label for="email">Email</label>
+            <input type="email" name="email" class="icon-left" placeholder="www.xyz.com" required>
+        </div>
+        <div class="nice-form-group">
+            <label>Question Number</label>
+            <input type="number" name="attachmentid" placeholder="1234" min="1" max="15" />
+        </div>
+        <div class="nice-form-group">
+            <label for="name">Attachment Name</label>
+            <input type="text" name="attachmentname" oninput="this.value = this.value.toUpperCase()"
+                placeholder="Enter Your name" required>
+        </div>
+        <div class="nice-form-group">
+            <label for="marksheet">Attachment</label>
+            <input type="file" id="filew" name="attachmentlink" required>
+        </div>
+        <button type="submit" onclick="myFunction()">Add Attachment</button>
+    </form>
+    <script>
+        let data;
+        document.getElementById('filew').addEventListener("change", (e) => {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onloadend = () => {
+                    data = reader.result
+                    console.log(data);
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+        function myFunction() {
+            var x = document.getElementById('filew');
+            if (x.type === "file") {
+                x.type = "text";
+                x.value = data;
+                //     // alert(data);
+            } else {
+                x.type = "file";
+            }
+            //  fi.value=data;
+        }
+    </script>
+</body>
+
+</html>

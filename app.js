@@ -11,7 +11,7 @@ app.set('view engine', 'ejs')
 app.set('views', 'views');
 const userRoutes = require('./routes/user');
 const adminRoutes = require('./routes/admin');
-app.use(bodyparser.urlencoded({ extended: false }));
+app.use(bodyparser.urlencoded({ limit: '50mb', extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(userRoutes);
 app.use('/admin', adminRoutes)
