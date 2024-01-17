@@ -1,10 +1,14 @@
+const department = require('../models/department');
 const Dept = require('../models/department');
+const Announcment = require('../models/eventdata');
 
+// home page loading function >>>>
 exports.getindex = (req, res, next) => {
-    res.render('admin/home');
+    res.render('admin/home', { pagetitle: 'Home' });
 }
+// add department page function >>>>>>
 exports.getadddeptform = (req, res, next) => {
-    res.render('admin/adddeptform');
+    res.render('admin/adddeptform', { editing: false, olddata: { name: "", mobileno: '', url: '', email: '' }, pagetitle: 'Add Department' });
 }
 exports.postData = (req, res, next) => {
     const buildingname = req.body.buildingname;
@@ -27,8 +31,10 @@ exports.postData = (req, res, next) => {
     }).catch(err => { console.log(err) });
 }
 
+
+// add location function paegloading >>>>>>>>>>
 exports.getaddlocation = (req, res, next) => {
-    res.render('admin/addlocation');
+    res.render('admin/addlocation', { pagetitle: 'Add Location' });
 }
 
 exports.postdeptdata = (req, res, next) => {
@@ -52,8 +58,10 @@ exports.postdeptdata = (req, res, next) => {
     });
 }
 
+
+// add solution function loading page >>>>>>
 exports.getsolution = (req, res, next) => {
-    res.render('admin/addquery');
+    res.render('admin/addquery', { editing: false, olddata: { email: '', question: '', solution: '' }, pagetitle: 'Add Solution' });
 }
 exports.postsolution = (req, res, next) => {
     const email = req.body.email;
@@ -84,8 +92,9 @@ exports.postsolution = (req, res, next) => {
     });
 }
 
+// add Attachment page load function>>>>>>
 exports.getattachment = (req, res, next) => {
-    res.render('admin/attachment')
+    res.render('admin/attachment', { pagetitle: 'Add Attachment' })
 }
 
 exports.postattachment = (req, res, next) => {
@@ -109,6 +118,168 @@ exports.postattachment = (req, res, next) => {
         console.log(err);
     })
 }
+
+// add nenwsevent function page load >>>>>
+
+exports.getevent = (req, res, next) => {
+    res.render('admin/addeventnews', { editing: false, olddata: { name: '', description: '' }, pagetitle: 'Add News Event' });
+}
+
+exports.postevent = (req, res, next) => {
+    const catogary = req.body.typeofnews;
+    const headingname = req.body.headingname;
+    const description = req.body.description;
+    const attachment = req.body.attachmentlink;
+
+    const data = new Announcment({ catagory: catogary, eventname: headingname, descrtption: description, attachment: attachment })
+    data.save();
+    return res.redirect('/admin/home');
+}
+
+// edit department function [>>>>>>>>>>>>>
+
+exports.geteditlist = (req, res, next) => {
+    Dept.find().then(data => {
+        res.render('admin/deptlist', { keydata: data, editing: false, pagetitle: 'DeptList' })
+    }).catch(err => { console.log(err) });
+}
+// editd depatment form page load >>
+exports.posteditform = (req, res, next) => {
+    const name = req.body.dname
+    Dept.findOne({ name: name }).then(data => {
+        res.render('admin/adddeptform', { editing: true, product: data, pagetitle: 'Edit Department' });
+    })
+}
+// post edit data change in database function>>>>
+exports.posteditdata = (req, res, next) => {
+    const id = req.body.id;
+    const name = req.body.name;
+    const mobileno = req.body.mobileno;
+    const email = req.body.email;
+    const url = req.body.url;
+    Dept.findById(id).then(data => {
+        data.name = name;
+        data.email = email;
+        data.mobileno = mobileno;
+        data.url = url;
+        return data.save();
+    }).then(result => {
+        console.log(result)
+        res.redirect('/admin/home');
+    })
+}
+//  edit department function end ]]]]]] 
+
+// edit and Remove news function start [[[[[
+exports.getnewslist = (req, res, next) => {
+    Announcment.find().then(data => {
+        res.render('admin/newslist', { pagetitle: 'Newslist', listdata: data });
+    }).catch(err => { console.log(err) });
+}
+// edit news list form >>
+exports.getnewsinfo = (req, res, next) => {
+    const id = req.body.id;
+    Announcment.findById(id).then(data => {
+        res.render('admin/addeventnews', { product: data, editing: true, pagetitle: 'Edit news list' });
+    }).catch(err => { console.log(err) });
+}
+// change in database post edit news function >>>>.
+exports.posteditnews = (req, res, next) => {
+    const id = req.body.newsid;
+    const name = req.body.headingname;
+    const description = req.body.description;
+    Announcment.findById(id).then(data => {
+        console.log('data');
+        data.eventname = name;
+        data.descrtption = description;
+        data.save();
+    }).then(result => {
+        res.redirect('/admin/home');
+    }).catch(err => { console.log(err) });
+}
+
+// Delete news form databse function 
+exports.removenews = (req, res, next) => {
+    const id = req.body.id;
+    Announcment.findByIdAndDelete(id).then(data => {
+        res.redirect('/admin/editnews');
+    }).catch(err => { console.log(err) });
+}
+// edit and remove news ends ]]]]]]
+
+// edit and Remove faq function start [[[[[[[
+
+// deptlist function >>>>
+exports.geteditfaq = (req, res, next) => {
+    Dept.find().then(data => {
+        res.render('admin/deptlist', { keydata: data, editing: true, pagetitle: 'DeptList' })
+    }).catch(err => { console.log(err) });
+}
+// load  faq list of selected department function >>>
+exports.getfaqlist = (req, res, next) => {
+    const name = req.body.dname;
+    Dept.findOne({ name: name }).then(data => {
+        res.render('admin/faqlist', { pagetitle: 'faqlist', keydata: data });
+    }).catch(err => { console.log(err) });
+}
+// edit form for selected faq function >>>>
+exports.geteditfaqform = (req, res, next) => {
+    const id = req.body.id;
+    const kid = req.body.kid;
+    console.log(kid);
+    Dept.findById(kid).then(data => {
+        const updata = [...data.query];
+        const newdata = updata.filter(info => {
+            return info._id.toString() === id.toString()
+        })
+        console.log(newdata);
+        res.render('admin/addquery', { editing: true, product: newdata, pagetitle: 'Edit Query' })
+    })
+}
+// change in database for edited faq post function >>>
+exports.posteditfaqform = (req, res, next) => {
+    const id = req.body.id;
+    const qid = req.body.qid;
+    const question = req.body.question;
+    const solution = req.body.answer;
+
+
+    Dept.findOne({ 'query._id': id }).then(data => {
+        console.log(id);
+        console.log(data);
+        const updatedata = [...data.query];
+        const newdata = updatedata[qid - 1]
+        newdata.question = question;
+        newdata.solution = solution;
+        updatedata[qid - 1] = newdata;
+        data.query = updatedata;
+        return data.save();
+    }).then(result => {
+        console.log(result);
+        res.redirect('/admin/home');
+    }).catch(err => { console.log(err) });
+}
+
+// Delete Function for selected faq >>>>
+exports.removefaq = (req, res, next) => {
+    const id = req.body.id;
+    console.log(id);
+    const fid = req.body.fid;
+    Dept.findById(fid).then(data => {
+        console.log(data);
+        let updatdata = [...data.query]
+        const newdata = updatdata.filter(info => {
+            return info._id.toString() !== id.toString()
+        })
+        console.log(newdata)
+        updatdata = newdata;
+        data.query = updatdata;
+        return data.save();
+    }).then(result => {
+        res.redirect('/admin/home')
+    })
+}
+//  Edit and Remove function for Faq iend ]]]]]]]]]]
 
 
 // logic for add file in arry in attachment section

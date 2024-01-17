@@ -1,0 +1,35 @@
+<%- include('../includes/head.ejs') %>
+</head>
+    <body>
+        <h1>News List</h1>
+        <% for(let key of listdata){ %>
+            <p>
+                <%= key.list %>
+            </p>
+            <p>
+                <%= key.eventname %>:
+                    <%= key.descrtption %>
+            </p>
+            <div class="main-container">
+                <div class="options">
+                    <form action="/admin/editnewsinfo" method="post">
+                        <input type="hidden" value="<%= key._id %>" name="id">
+                        <button>
+                            <i class="fa-solid fa-pen-to-square" style="font-size: 1.5rem;"> edit</i>
+                        </button>
+                    </form>
+                </div>
+                <div class="options">
+                    <form action="/admin/removenews" method="post">
+                        <input type="hidden" value="<%= key._id %>" name="id">
+                        <button type="submit">
+                            <i class="fa-solid fa-trash" style="font-size: 1.5rem;">Remove</i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+            <hr>
+            <% } %>
+    </body>
+
+    <%- include('../includes/end.ejs') %>

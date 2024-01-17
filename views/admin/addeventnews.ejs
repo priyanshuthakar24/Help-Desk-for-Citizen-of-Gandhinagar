@@ -1,0 +1,81 @@
+<%- include('../includes/head.ejs') %>
+    <link rel="stylesheet" href="/css/form.css">
+    </head>
+
+    <body>
+        <h1>Add event list</h1>
+        <div class="eventlist">
+            <form action="/admin/<% if (editing) { %>editednewsinfo<% }else{ %> addevent <% } %> " method="post"
+                class="product-form">
+                <div class="nice-form-group">
+                    <label for="typeofnews">Select Type</label>
+                    <% if (editing) { %>
+                        <select name="typeofnews" id="" readonly>
+                            <option value="<%= product.catagory %>">
+                                <%= product.catagory %>
+                            </option>
+                        </select>
+                        <% }else{ %>
+                            <select name="typeofnews" id="">
+                                <option value="job">Job</option>
+                                <option value="cevent">Event</option>
+                            </select>
+                            <% } %>
+                                <div class="nice-form-group">
+                                    <label for="name">Heading name </label>
+                                    <input type="text" name="headingname"
+                                        oninput="this.value = this.value.toUpperCase()"
+                                        value="<% if (editing) {%><%=product.eventname %><%}else{%><%= olddata.name %><%}%>"
+                                        required placeholder="Enter Your name" required>
+                                </div>
+                                <div class="nice-form-group">
+                                    <label for="description">Description</label>
+                                    <textarea rows="5" value="" name="description"
+                                        placeholder="Enter solution"><% if (editing) {%><%=product.descrtption %><%}else{%><%= olddata.descrtption%><%}%></textarea>
+                                </div>
+                                <% if (editing) { %>
+
+                                    <% }else{ %>
+                                        <div class="nice-form-group">
+                                            <label for="marksheet">Attachment</label>
+                                            <input type="file" id="filew" name="attachmentlink" required>
+                                        </div>
+                                        <% } %>
+                                            <% if (editing){%>
+                                                <input type="hidden" value="<%= product._id%>" name="newsid">
+                                                <%}%>
+                                                    <button class="btn btn-primary" type="submit"
+                                                        onclick="myFunction()">
+                                                        <% if(editing){%>EditNews<%}else{%> Add News <%}%>
+                                                    </button>
+                                                    <!-- <input type="text" name="buildingname" oninput="this.value = this.value.toUpperCase()"
+                    placeholder="Enter Your name" required> -->
+                </div>
+            </form>
+        </div>
+        <script>
+            let data;
+            document.getElementById('filew').addEventListener("change", (e) => {
+                const file = e.target.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onloadend = () => {
+                        data = reader.result
+                        console.log(data);
+                    };
+                    reader.readAsDataURL(file);
+                }
+            });
+            function myFunction() {
+                var x = document.getElementById('filew');
+                if (x.type === "file") {
+                    x.type = "text";
+                    x.value = data;
+                    //     // alert(data);
+                } else {
+                    x.type = "file";
+                }
+                //  fi.value=data;
+            }
+        </script>
+<%- include('../includes/end.ejs') %>

@@ -1,0 +1,13 @@
+<%- include('../includes/head.ejs') %>
+    </head>
+
+    <body>
+        <h1>News Announcement</h1>
+        <div class="news">
+            <% for(let key of dataresult){ %>
+                <h1>
+                    <%= key.eventname %>
+                </h1>
+                <% } %>
+        </div>
+        <%- include('../includes/end.ejs') %>

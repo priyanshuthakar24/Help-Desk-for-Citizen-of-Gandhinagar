@@ -1,33 +1,37 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add queary</title>
+<%- include('../includes/head.ejs') %>
     <link rel="stylesheet" href="/css/form.css">
-    <link rel="stylesheet" href="/css/index.css">
-</head>
+    </head>
 
-<body>
-    <h1>Add your solutions</h1>
-    <div class="solution">
-        <form action="/admin/addsolution" method="post" class="product-form">
-            <div class="nice-form-group">
-                <label for="email">Email</label>
-                <input type="email" name="email" class="icon-left" placeholder="www.xyz.com" required>
-            </div>
-            <div class="nice-form-group">
-                <label for="question">Question</label>
-                <textarea rows="5" value="" name="question" placeholder="Enter question"></textarea>
-            </div>
-            <div class="nice-form-group">
-                <label for="answer">Answer</label>
-                <textarea rows="10" value="" name="answer" placeholder="Enter solution"></textarea>
-            </div>
-            <button type="submit">Add Solution</button>
-        </form>
-    </div>
-</body>
+    <body>
+        <h1>Add your solutions</h1>
+        <div class="solution">
+            <form action="/admin/<% if(editing){%>postfaqedit<%}else{%>addsolution<%}%>" method="post"
+                class="product-form">
+                <div class="nice-form-group">
+                    <% if (editing) { %>
 
-</html>
+                        <% }else{ %>
+                            <label for="email">Email</label>
+                            <input type="email" name="email" class="icon-left" placeholder="www.xyz.com" required>
+                            <% } %>
+                </div>
+                <div class="nice-form-group">
+                    <label for="question">Question</label>
+                    <textarea rows="5" value="" name="question"
+                        placeholder="Enter question"><% if (editing) {  %><%= product[0].question %><%}else{ %><%= olddata.question %><%}%></textarea>
+                </div>
+                <div class="nice-form-group">
+                    <label for="answer">Answer</label>
+                    <textarea rows="10" name="answer"
+                        placeholder="Enter solution"><% if (editing) {  %><%= product[0].solution %><%}else{ %><%= olddata.solution %><%}%></textarea>
+                </div>
+                <% if (editing) { %>
+                    <input type="hidden" value="<%= product[0]._id %>" name="id">
+                    <input type="hidden" value="<%= product[0].id %>" name="qid">
+                    <button type="submit">Edit Solution</button>
+                    <% } else{%>
+                        <button type="submit">Add Solution</button>
+                        <% } %>
+            </form>
+        </div>
+        <%- include('../includes/end.ejs') %>

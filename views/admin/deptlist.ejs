@@ -1,0 +1,18 @@
+<%- include('../includes/head.ejs') %>
+    </head>
+
+    <body>
+        <h1>Edit Department list</h1>
+        <div class="main-container">
+            <% for(let key of keydata){ %>
+                <div class="options">
+                    <form action="/admin/<% if (editing) { %>faqlist<% }else{ %>editdept<% } %>" method="post">
+                        <input type="hidden" value="<%= key.name %>" name="dname">
+                        <button type="submit">
+                            <%= key.name %>
+                        </button>
+                    </form>
+                </div>
+                <% } %>
+        </div>
+        <%- include('../includes/end.ejs') %>

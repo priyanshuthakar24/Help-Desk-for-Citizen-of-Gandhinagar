@@ -1,30 +1,72 @@
 <!DOCTYPE html>
-<html lang="en">
+<%- include('../includes/head.ejs') %>
+    </head>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
-    <link rel="stylesheet" href="/css/index.css">
-</head>
+    <body>
+        <%- include('../includes/nav.ejs')%>
+            <main>
+                <div class="header1 nine">
+                    <h1>Gandhinagar Municipal corporation<span>portal for citizen</span></h1>
+                </div>
 
-<body>
-    <h1>Gandhinagar Municipal corporation</h1>
-    <div class="main-container">
-        <div class="options">
-            <form action="/dept" method="post">
-                <input type="hidden" value="GMC" name="building">
-                <button type="submit">Gmc</button>
-            </form>
-        </div>
-        <div class="options">
-            <button>karmyogi bhavn</button>
-        </div>
-        <div class="options">
-            <button>Sachivaly</button>
-        </div>
-    </div> <br><br>
-    <p>hello world!</p>
-</body>
-
-</html>
+                <div class="main-container">
+                    <div class="item">
+                        <div class="item-1">
+                            <form action="/dept" method="post">
+                                <input type="hidden" value="GMC" name="building">
+                                <button type="submit" class="btn-login"><img src="/img/Gandhinagar-01.png" alt="">
+                                    <div class="detail">
+                                        <h3>Gmc</h3>
+                                    </div>
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="item-1">
+                            <button class="btn-login">
+                                <div class="detail">
+                                    <h3>karmyogi bhavn</h3>
+                                </div>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="item-1">
+                            <form action="/jobnews" method="post">
+                                <input type="hidden" value="job" name="newstype">
+                                <button type="submit" class="btn-login"><i class="fa-solid fa-bullhorn"></i>
+                                    <div class="detail">
+                                        <h3>Job news</h3>
+                                    </div>
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="item-1">
+                            <form action="/culturenews" method="post">
+                                <input type="hidden" value="cevent" name="newstype">
+                                <button type="submit" class="btn-login"><i class="fa-solid fa-bullhorn"></i>
+                                    <div class="detail">
+                                        <h3>Culture News</h3>
+                                    </div>
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                    <!-- <div class="options">
+                    </div> -->
+                    <!-- <div class="options">
+                        <button>Sachivaly</button>
+                    </div> -->
+                </div> <br><br>
+                <p>hello world!</p>
+            </main>
+            <%- include('../includes/end.ejs') %>
+                <!-- <div class="options">
+                <form action="/culturenews" method="post">
+                    <input type="hidden" value="cevent" name="newstype">
+                    <button type="submit">Culture News</button>
+                </form>
+            </div> -->

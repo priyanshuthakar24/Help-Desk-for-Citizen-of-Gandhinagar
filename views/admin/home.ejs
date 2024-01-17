@@ -1,38 +1,53 @@
-<!DOCTYPE html>
-<html lang="en">
+<%- include('../includes/head.ejs') %>
+    </head>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>admin home</title>
-    <link rel="stylesheet" href="/css/index.css">
-</head>
+    <body>
+        <h1>Gandhinagar Municipal Corporation</h1>
+        <div class="main-container">
 
-<body>
-    <h1>Gandhinagar Municipal Corporation</h1>
-    <div class="main-container">
-
-        <div class="options">
-            <a href="/admin/adddept">
-                <button>Add Department</button>
-            </a>
+            <div class="options">
+                <a href="/admin/adddept">
+                    <button>Add Department</button>
+                </a>
+            </div>
+            <div class="options">
+                <a href="/admin/addlocation">
+                    <button>Add location</button>
+                </a>
+            </div>
+            <div class="options">
+                <a href="/admin/addsolution">
+                    <button>Add Solution</button>
+                </a>
+            </div>
+            <div class="options">
+                <a href="/admin/addattachment">
+                    <button>Add Attachment</button>
+                </a>
+            </div>
+            <div class="options">
+                <a href="/admin/addevent">
+                    <button>Add Event</button>
+                </a>
+            </div>
+            <div class="options">
+                <a href="/admin/editdept">
+                    <button>Edit
+                        Department
+                    </button>
+                </a>
+            </div>
+            <div class="options">
+                <a href="/admin/editnews">
+                    <button>Edit News
+                    </button>
+                </a>
+            </div>
+            <div class="options">
+                <a href="/admin/editsolution">
+                    <button>Edit Soloution
+                    </button>
+                </a>
+            </div>
         </div>
-        <div class="options">
-            <a href="/admin/addlocation">
-                <button>Add location</button>
-            </a>
-        </div>
-        <div class="options">
-            <a href="/admin/addsolution">
-                <button>Add Solution</button>
-            </a>
-        </div>
-        <div class="options">
-            <a href="/admin/addattachment">
-                <button>Add Attachment</button>
-            </a>
-        </div>
-    </div>
-</body>
-
-</html>
+        <%- include('../includes/end.ejs') %>

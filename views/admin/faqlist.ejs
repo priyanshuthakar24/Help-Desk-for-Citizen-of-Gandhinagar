@@ -1,0 +1,37 @@
+<%- include('../includes/head.ejs') %>
+ </head>
+    <body>
+        <h1>
+            <%= keydata.name %>
+        </h1>
+
+        <% for(let key of keydata.query) {%>
+            <p>
+                <%= key.question %>
+
+                    :<%= key.solution %>
+            </p>
+            <div class="main-container">
+
+                <div class="options">
+                    <form action="/admin/editfaq" method="post">
+                        <input type="hidden" value="<%= key._id %>" name="id">
+                        <input type="hidden" value="<%= keydata._id %>" name="kid">
+                        <button>
+                            <i class="fa-solid fa-pen-to-square" style="font-size: 1.5rem;"> edit</i>
+                        </button>
+                    </form>
+                </div>
+                <div class="options">
+                    <form action="/admin/removefaq" method="post">
+                        <input type="hidden" value="<%= key._id %>" name="id">
+                        <input type="hidden" value="<%= keydata._id %>" name="fid">
+                        <button type="submit">
+                            <i class="fa-solid fa-trash" style="font-size: 1.5rem;"> Remove</i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+            <hr>
+            <% } %>
+                <%- include('../includes/end.ejs') %>

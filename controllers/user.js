@@ -1,23 +1,37 @@
 const Dept = require('../models/department');
-
+const Eventdata = require('../models/eventdata');
 exports.getindex = (req, res, next) => {
-    res.render('user/index');
+    res.render('user/index', { pagetitle: 'Home' });
 }
 exports.getdept = (req, res, next) => {
     const building = req.body.building;
     Dept.find({ building: building }).then(data => {
         console.log(data);
-        res.render('user/deptlist', { deptdata: data });
+        res.render('user/deptlist', { deptdata: data, pagetitle: 'Department List' });
     }).catch(err => { console.log(err) })
 }
 exports.getinfo = (req, res, next) => {
     const deptname = req.body.deptname;
     Dept.findOne({ name: deptname }).then(data => {
         // console.log(data);
-        res.render('user/deptinfo', { deptinfo: data })
+        res.render('user/deptinfo', { deptinfo: data, pagetitle: 'Department Info' });
     }).catch(err => { console.log(err) })
 
 }
 exports.getdata = (req, res, next) => {
     res.render('user/data');
+}
+exports.getjobnews = (req, res, next) => {
+    const eventdat = req.body.newstype;
+    Eventdata.find({ catagory: eventdat }).then(data => {
+        res.render('user/announcement', { dataresult: data, pagetitle: 'Job Announcement' });
+        console.log(data);
+    }).catch(err => { console.log(err) });
+}
+exports.getculturenews = (req, res, next) => {
+    const eventdat = req.body.newstype;
+    Eventdata.find({ catagory: eventdat }).then(data => {
+        res.render('user/announcement', { dataresult: data, pagetitle: 'Culture Annoncement' });
+        console.log(data);
+    }).catch(err => { console.log(err) });
 }
