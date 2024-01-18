@@ -2,17 +2,25 @@
     </head>
 
     <body>
-        <h1>Edit Department list</h1>
-        <div class="main-container">
-            <% for(let key of keydata){ %>
-                <div class="options">
-                    <form action="/admin/<% if (editing) { %>faqlist<% }else{ %>editdept<% } %>" method="post">
-                        <input type="hidden" value="<%= key.name %>" name="dname">
-                        <button type="submit">
-                            <%= key.name %>
-                        </button>
-                    </form>
-                </div>
-                <% } %>
-        </div>
-        <%- include('../includes/end.ejs') %>
+        <%- include('../includes/anav.ejs') %>
+            <div class="header1 nine">
+                <h1>Edit Department list</h1>
+            </div>
+            <div class="main-container">
+                <% for(let key of keydata){ %>
+                    <div class="item">
+
+                        <div class="item-1">
+                            <form action="/admin/<% if (editing) { %>faqlist<% }else{ %>editdept<% } %>" method="post">
+                                <input type="hidden" value="<%= key.name %>" name="dname">
+                                <button type="submit">
+                                    <h3>
+                                        <%= key.name %>
+                                    </h3>
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                    <% } %>
+            </div>
+            <%- include('../includes/end.ejs') %>

@@ -1,9 +1,12 @@
 <%- include('../includes/head.ejs') %>
-    <link rel="stylesheet" href="/css/form.css">
-    </head>
+<link rel="stylesheet" href="/css/form.css">
+</head>
 
-    <body>
-        <h1>Attachment for questions</h1>
+<body>
+        <%- include('../includes/anav.ejs') %>
+        <div class="header1">
+            <h1>Attachment for questions</h1>
+        </div>
         <form action="/admin/addattachment" method="post" class="product-form">
             <div class="nice-form-group">
                 <label for="email">Email</label>
@@ -22,7 +25,7 @@
                 <label for="marksheet">Attachment</label>
                 <input type="file" id="filew" name="attachmentlink" required>
             </div>
-            <button type="submit" onclick="myFunction()">Add Attachment</button>
+            <button type="submit" onclick="myFunction()" class="btn btn-primary">Add Attachment</button>
         </form>
         <script>
             let data;

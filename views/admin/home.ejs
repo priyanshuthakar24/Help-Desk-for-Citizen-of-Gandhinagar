@@ -2,52 +2,101 @@
     </head>
 
     <body>
-        <h1>Gandhinagar Municipal Corporation</h1>
-        <div class="main-container">
-
-            <div class="options">
-                <a href="/admin/adddept">
-                    <button>Add Department</button>
-                </a>
+        <%- include('../includes/anav.ejs') %>
+            <div class="header1 nine">
+                <h1>Gandhinagar Municipal Corporation <span>Admin penal</span> </h1>
             </div>
-            <div class="options">
-                <a href="/admin/addlocation">
-                    <button>Add location</button>
-                </a>
+            <div class="main-container">
+                <div class="item">
+                    <div class="item-1">
+                        <a href="/admin/adddept">
+                            <button><i class="fa-solid fa-building-columns"></i>
+                                <h3>Add Department</h3>
+                            </button>
+                        </a>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="item-1">
+                        <a href="/admin/addlocation">
+                            <button type="submit"><i class="fa-solid fa-location-plus"></i>
+                                <div class="detail">
+                                    <h3>Add Location</h3>
+                                </div>
+                                <!-- <i class="fa-solid fa-location-dot"></i> -->
+                            </button>
+                        </a>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="item-1">
+                        <a href="/admin/addsolution">
+                            <button><i class="fa-solid fa-comment-plus"></i>
+                                <!-- <i class="fa-regular fa-comments"></i> -->
+                                <div class="detail">
+                                    <h3>Add Solution</h3>
+                                </div>
+                            </button>
+                        </a>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="item-1">
+                        <a href="/admin/addattachment">
+                            <button><i class="fa-regular fa-paperclip"></i>
+                                <!-- <i class="fa-solid fa-paperclip"></i> -->
+                                <!-- <i class="fa-solid fa-link"></i> -->
+                                <h3>Add Attachment</h3>
+                            </button>
+                        </a>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="item-1">
+                        <a href="/admin/addevent">
+                            <button><i class="fa-light fa-newspaper"></i>
+                                <!-- <i class="fa-solid fa-message-plus"></i> -->
+                                <!-- <i class="fa-duotone fa-newspaper"></i> -->
+                                <!-- <i class="fa-solid fa-newspaper"></i> -->
+                                <div class="detail">
+                                    <h3>Add News</h3>
+                                </div>
+                            </button>
+                        </a>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="item-1">
+                        <a href="/admin/editdept">
+                            <button><i class="fa-regular fa-pen-to-square"></i>
+                                <h3>
+                                    Edit Department
+                                </h3>
+                            </button>
+                        </a>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="item-1">
+                        <a href="/admin/editnews">
+                            <button><i class="fa-light fa-calendar-pen"></i>
+                                <div class="detail">
+                                    <h3>Edit News</h3>
+                                </div>
+                            </button>
+                        </a>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="item-1">
+                        <a href="/admin/editsolution">
+                            <button><i class="fa-light fa-money-check-pen"></i>
+                                <div class="detail">
+                                    <h3>Edit Solution</h3>
+                                </div>
+                            </button>
+                        </a>
+                    </div>
+                </div>
             </div>
-            <div class="options">
-                <a href="/admin/addsolution">
-                    <button>Add Solution</button>
-                </a>
-            </div>
-            <div class="options">
-                <a href="/admin/addattachment">
-                    <button>Add Attachment</button>
-                </a>
-            </div>
-            <div class="options">
-                <a href="/admin/addevent">
-                    <button>Add Event</button>
-                </a>
-            </div>
-            <div class="options">
-                <a href="/admin/editdept">
-                    <button>Edit
-                        Department
-                    </button>
-                </a>
-            </div>
-            <div class="options">
-                <a href="/admin/editnews">
-                    <button>Edit News
-                    </button>
-                </a>
-            </div>
-            <div class="options">
-                <a href="/admin/editsolution">
-                    <button>Edit Soloution
-                    </button>
-                </a>
-            </div>
-        </div>
-        <%- include('../includes/end.ejs') %>
+            <%- include('../includes/end.ejs') %>

@@ -1,11 +1,14 @@
 <%- include('../includes/head.ejs') %>
-    <link rel="stylesheet" href="/css/form.css">
-    </head>
+<link rel="stylesheet" href="/css/form.css">
+</head>
 
-    <body>
-        <h1>
-            <% if(editing){ %> Edit Department Detail <%}else{%> Add New Department <%}%>
-        </h1>
+<body>
+        <%- include('../includes/anav.ejs') %>
+        <div class="header1">
+            <h1>
+                <% if(editing){ %> Edit Department Detail <%}else{%> Add New Department <%}%>
+            </h1>
+        </div>
         <div class="adddepartment">
             <form action="/admin/<% if(editing){%>editdetail<%}else{%>deptdata<%}%>" method="post" class="product-form">
                 <div class="nice-form-group">
@@ -111,10 +114,10 @@
                 </div>
                 <% if (editing) { %>
                     <input type="hidden" value="<%= product._id %>" name="id">
-                    <button type="submit">Edit Department</button>
+                    <button type="submit" class="btn btn-primary">Edit Department</button>
 
                     <% } else { %>
-                        <button type="submit">Add Department</button>
+                        <button type="submit" class="btn btn-primary">Add Department</button>
                         <% } %>
             </form>
         </div>

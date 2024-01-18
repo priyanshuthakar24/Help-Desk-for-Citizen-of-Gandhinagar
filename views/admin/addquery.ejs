@@ -3,35 +3,38 @@
     </head>
 
     <body>
-        <h1>Add your solutions</h1>
-        <div class="solution">
-            <form action="/admin/<% if(editing){%>postfaqedit<%}else{%>addsolution<%}%>" method="post"
-                class="product-form">
-                <div class="nice-form-group">
-                    <% if (editing) { %>
+        <%- include('../includes/anav.ejs') %>
+            <div class="header1">
+                <h1>Add your solutions</h1>
+            </div>
+            <div class="solution">
+                <form action="/admin/<% if(editing){%>postfaqedit<%}else{%>addsolution<%}%>" method="post"
+                    class="product-form">
+                    <div class="nice-form-group">
+                        <% if (editing) { %>
 
-                        <% }else{ %>
-                            <label for="email">Email</label>
-                            <input type="email" name="email" class="icon-left" placeholder="www.xyz.com" required>
+                            <% }else{ %>
+                                <label for="email">Email</label>
+                                <input type="email" name="email" class="icon-left" placeholder="www.xyz.com" required>
+                                <% } %>
+                    </div>
+                    <div class="nice-form-group">
+                        <label for="question">Question</label>
+                        <textarea rows="5" value="" name="question"
+                            placeholder="Enter question"><% if (editing) {  %><%= product[0].question %><%}else{ %><%= olddata.question %><%}%></textarea>
+                    </div>
+                    <div class="nice-form-group">
+                        <label for="answer">Answer</label>
+                        <textarea rows="10" name="answer"
+                            placeholder="Enter solution"><% if (editing) {  %><%= product[0].solution %><%}else{ %><%= olddata.solution %><%}%></textarea>
+                    </div>
+                    <% if (editing) { %>
+                        <input type="hidden" value="<%= product[0]._id %>" name="id">
+                        <input type="hidden" value="<%= product[0].id %>" name="qid">
+                        <button type="submit" class="btn btn-primary">Edit Solution</button>
+                        <% } else{%>
+                            <button type="submit" class="btn btn-primary">Add Solution</button>
                             <% } %>
-                </div>
-                <div class="nice-form-group">
-                    <label for="question">Question</label>
-                    <textarea rows="5" value="" name="question"
-                        placeholder="Enter question"><% if (editing) {  %><%= product[0].question %><%}else{ %><%= olddata.question %><%}%></textarea>
-                </div>
-                <div class="nice-form-group">
-                    <label for="answer">Answer</label>
-                    <textarea rows="10" name="answer"
-                        placeholder="Enter solution"><% if (editing) {  %><%= product[0].solution %><%}else{ %><%= olddata.solution %><%}%></textarea>
-                </div>
-                <% if (editing) { %>
-                    <input type="hidden" value="<%= product[0]._id %>" name="id">
-                    <input type="hidden" value="<%= product[0].id %>" name="qid">
-                    <button type="submit">Edit Solution</button>
-                    <% } else{%>
-                        <button type="submit">Add Solution</button>
-                        <% } %>
-            </form>
-        </div>
-        <%- include('../includes/end.ejs') %>
+                </form>
+            </div>
+            <%- include('../includes/end.ejs') %>

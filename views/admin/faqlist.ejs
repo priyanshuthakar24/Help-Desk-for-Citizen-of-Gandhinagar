@@ -1,9 +1,13 @@
 <%- include('../includes/head.ejs') %>
- </head>
-    <body>
-        <h1>
-            <%= keydata.name %>
-        </h1>
+</head>
+
+<body>
+        <%- include('../includes/anav.ejs') %>
+        <div class="nine">
+            <h1>
+                <%= keydata.name %> 
+            </h1>
+        </div>
 
         <% for(let key of keydata.query) {%>
             <p>
@@ -12,24 +16,28 @@
                     :<%= key.solution %>
             </p>
             <div class="main-container">
+                <div class="item">
+                    <div class="item-1">
+                        <form action="/admin/editfaq" method="post">
+                            <input type="hidden" value="<%= key._id %>" name="id">
+                            <input type="hidden" value="<%= keydata._id %>" name="kid">
+                            <button><i class="fa-solid fa-pen-to-square" style="font-size:2rem;"> Edit</i>
 
-                <div class="options">
-                    <form action="/admin/editfaq" method="post">
-                        <input type="hidden" value="<%= key._id %>" name="id">
-                        <input type="hidden" value="<%= keydata._id %>" name="kid">
-                        <button>
-                            <i class="fa-solid fa-pen-to-square" style="font-size: 1.5rem;"> edit</i>
-                        </button>
-                    </form>
+                            </button>
+                        </form>
+                    </div>
                 </div>
-                <div class="options">
-                    <form action="/admin/removefaq" method="post">
-                        <input type="hidden" value="<%= key._id %>" name="id">
-                        <input type="hidden" value="<%= keydata._id %>" name="fid">
-                        <button type="submit">
-                            <i class="fa-solid fa-trash" style="font-size: 1.5rem;"> Remove</i>
-                        </button>
-                    </form>
+                <div class="item">
+
+                    <div class="item-1">
+                        <form action="/admin/removefaq" method="post">
+                            <input type="hidden" value="<%= key._id %>" name="id">
+                            <input type="hidden" value="<%= keydata._id %>" name="fid">
+                            <button type="submit">
+                                <i class="fa-solid fa-trash" style="font-size: 1.5rem;"> Remove</i>
+                            </button>
+                        </form>
+                    </div>
                 </div>
             </div>
             <hr>

@@ -1,9 +1,12 @@
 <%- include('../includes/head.ejs') %>
-    <link rel="stylesheet" href="/css/form.css">
-    </head>
+<link rel="stylesheet" href="/css/form.css">
+</head>
 
-    <body>
-        <h1>Add event list</h1>
+<body>
+        <%- include('../includes/anav.ejs') %>
+        <div class="header1">
+            <h1>Add event list</h1>
+        </div>
         <div class="eventlist">
             <form action="/admin/<% if (editing) { %>editednewsinfo<% }else{ %> addevent <% } %> " method="post"
                 class="product-form">
@@ -44,7 +47,7 @@
                                             <% if (editing){%>
                                                 <input type="hidden" value="<%= product._id%>" name="newsid">
                                                 <%}%>
-                                                    <button class="btn btn-primary" type="submit"
+                                                    <button class="btn btn-primary " type="submit"
                                                         onclick="myFunction()">
                                                         <% if(editing){%>EditNews<%}else{%> Add News <%}%>
                                                     </button>
@@ -78,4 +81,4 @@
                 //  fi.value=data;
             }
         </script>
-<%- include('../includes/end.ejs') %>
+        <%- include('../includes/end.ejs') %>
