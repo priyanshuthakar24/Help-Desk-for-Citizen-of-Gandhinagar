@@ -1,5 +1,5 @@
 <%- include('../includes/head.ejs') %>
-    <!-- <link rel="stylesheet" href="/css/collaps.css"> -->
+    <link rel="stylesheet" href="/css/collaps.css">
     </head>
 
     <body>
@@ -12,13 +12,14 @@
                         <%= deptinfo.name%> <span>~</span>
                     </h1>
                     <h3>
-                        &nbsp;&nbsp;&nbsp;<i class="fa-duotone fa-phone-rotary"></i>&nbsp;  : <%= deptinfo.mobileno %>
+                        &nbsp;&nbsp;&nbsp;<i class="fa-duotone fa-phone-rotary"></i>&nbsp; : +91 <%= deptinfo.mobileno
+                            %>
                     </h3>
                     <h3>
-                        &nbsp;&nbsp;&nbsp;<i class="fa-solid fa-envelope-open"></i>&nbsp;  : <%= deptinfo.email %>
+                        &nbsp;&nbsp;&nbsp;<i class="fa-solid fa-envelope-open"></i>&nbsp; : <%= deptinfo.email %>
                     </h3>
                     <h3>
-                        &nbsp;&nbsp;&nbsp;<i class="fa-regular fa-link"> </i>&nbsp;  : <a href="<%= deptinfo.url %>">
+                        &nbsp;&nbsp;&nbsp;<i class="fa-regular fa-link"> </i>&nbsp; : <a href="<%= deptinfo.url %>">
                             <%= deptinfo.url %>
                         </a>
                     </h3>
@@ -38,21 +39,21 @@
                     </div>
                     <h1><span>~</span></h1>
                 </div>
-                <div>
-                    <h1>અપના પ્રશ્નો:-</h1>
+                <div class="solution">
+                    <div class="header1 nine">
+                        <h1>અપના પ્રશ્નો:-</h1>
+                    </div>
                     <% for( let keydata of deptinfo.query){%>
-                        <section class="accordion">
-                            <input type="checkbox" name="collapse" id="handle1" checked="checked">
-                            <h2 class="handle">
-                                <label for="handle1">
-                                    <%= keydata.question %>
-                                </label>
 
-                            </h2>
+                        <details>
+                            <summary>
+                                <%= keydata.question %>
+                            </summary>
                             <div class="content">
-                                <p><strong>
-                                        <%= keydata.solution%>
-                                    </strong></p>
+                                <p>
+                                    <%= keydata.solution %>
+                                </p>
+
                                 <% for(let keyvalue of keydata.attachment){%>
                                     <p>
                                         <a href="<%= keyvalue.attachmentlink %>" target="_blank">
@@ -63,7 +64,7 @@
                                     </p>
                                     <% } %>
                             </div>
-                        </section>
+                        </details>
                         <%}%>
                 </div>
         </main>

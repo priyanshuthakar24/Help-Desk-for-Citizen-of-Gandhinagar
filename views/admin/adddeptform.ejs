@@ -1,64 +1,68 @@
 <%- include('../includes/head.ejs') %>
-<link rel="stylesheet" href="/css/form.css">
-</head>
+    <link rel="stylesheet" href="/css/form.css">
+    </head>
 
-<body>
+    <body>
         <%- include('../includes/anav.ejs') %>
-        <div class="header1">
-            <h1>
-                <% if(editing){ %> Edit Department Detail <%}else{%> Add New Department <%}%>
-            </h1>
-        </div>
-        <div class="adddepartment">
-            <form action="/admin/<% if(editing){%>editdetail<%}else{%>deptdata<%}%>" method="post" class="product-form">
-                <div class="nice-form-group">
-                    <label for="buildingname">Building Name</label>
-                    <% if (editing) { %>
-                        <select name="buildingname" readonly id="">
-                            <option value="<%= product.building %>">
-                                <%= product.building %>
-                            </option>
-                        </select>
-
-                        <% }else{ %>
-
-                            <select name="buildingname" id="">
-                                <option value="GMC">Gmc</option>
-                                <option value="karmyogibhavan">KarmYogi bhavan</option>
-                                <option value="Sachivaly">Sachivaly</option>
+            <div class="header1">
+                <h1>
+                    <% if(editing){ %> Edit Department Detail <%}else{%> Add New Department <%}%>
+                </h1>
+            </div>
+            <div class="adddepartment">
+                <form action="/admin/<% if(editing){%>editdetail<%}else{%>deptdata<%}%>" method="post"
+                    class="product-form">
+                    <div class="nice-form-group">
+                        <label for="buildingname">Building Name</label>
+                        <% if (editing) { %>
+                            <select name="buildingname" readonly id="">
+                                <option value="<%= product.building %>">
+                                    <%= product.building %>
+                                </option>
                             </select>
-                            <% } %>
-                                <!-- <input type="text" name="buildingname" oninput="this.value = this.value.toUpperCase()"
-                    placeholder="Enter Your name" required> -->
-                </div>
-                <div class="nice-form-group">
-                    <label for="name">Name</label>
-                    <input type="text" name="name" oninput="this.value = this.value.toUpperCase()"
-                        placeholder="Enter Your name"
-                        value="<% if (editing) {%><%=product.name %><%}else{%><%= olddata.name %><%}%>" required>
-                </div>
-                <div class="nice-form-group">
-                    <label for="mobileno">Mobile No</label>
-                    <input type="tel" name="mobileno"
-                        value="<% if (editing) {%><%=product.mobileno %><%}else{%><%= olddata.mobileno%><%}%>"
-                        class="icon-left" placeholder="Your Phone Number" pattern="[0-9]{10}" required>
-                </div>
-                <div class="nice-form-group">
-                    <label for="email">Email</label>
-                    <input type="email" name="email"
-                        value="<% if (editing) {%><%=product.email %><%}else{%><%= olddata.email%><%}%>"
-                        class="icon-left" placeholder="www.xyz.com" required>
-                </div>
-                <div class="nice-form-group">
-                    <label for="url">Url</label>
-                    <input type="url" name="url" placeholder="www.google.com"
-                        value="<% if (editing) {%><%=product.url %><%}else{%><%= olddata.url%><%}%>"
-                        class="icon-left" />
 
-                </div>
-                <div class="editingcon">
-                    <% if (editing) { %>
-                        <!-- <div class="nice-form-group">
+                            <% }else{ %>
+
+                                <select name="buildingname" id="">
+                                    <option value="GMC">Gmc</option>
+                                    <option value="karmyogibhavan">KarmYogi bhavan</option>
+                                    <option value="Sachivaly">Sachivaly</option>
+                                </select>
+                                <% } %>
+                                    <!-- <input type="text" name="buildingname" oninput="this.value = this.value.toUpperCase()"
+                    placeholder="Enter Your name" required> -->
+                    </div>
+                    <div class="nice-form-group">
+                        <label for="name">Name</label>
+                        <input type="text" name="name" oninput="this.value = this.value.toUpperCase()"
+                            placeholder="Enter Your name"
+                            value="<% if (editing) {%><%=product.name %><%}else{%><%= olddata.name %><%}%>" required>
+                    </div>
+                    <div class="nice-form-group">
+                        <label for="mobileno">Mobile No</label>
+                        <input type="tel" name="mobileno"
+                            value="<% if (editing) {%><%=product.mobileno %><%}else{%><%= olddata.mobileno%><%}%>"
+                            class="icon-left" placeholder="Your Phone Number" pattern="[0-9]{10}" required>
+                    </div>
+                    <div class="nice-form-group">
+                        <label for="email">Email</label>
+                        <input type="email" name="email"
+                            value="<% if (editing) {%><%=product.email %><%}else{%><%= olddata.email%><%}%>"
+                            class="icon-left" placeholder="www.xyz.com" required>
+                    </div>
+                    <div class="nice-form-group">
+                        <label for="url">Url</label>
+                        <input type="url" name="url" placeholder="www.google.com"
+                            value="<% if (editing) {%><%=product.url %><%}else{%><%= olddata.url%><%}%>"
+                            class="icon-left" />
+                    </div>
+                    <div class="nice-form-group">
+                        <label for="imageurl">Icon Image</label>
+                        <input type="file" id="filew" name="imageurl" required>
+                    </div>
+                    <div class="editingcon">
+                        <% if (editing) { %>
+                            <!-- <div class="nice-form-group">
                         <label for="Address">Address</label>
                         <% if (editing) {%>
                             <textarea rows="5" value="<%= product.address %>" name="address" readonly
@@ -86,39 +90,65 @@
                         <label>ClosingTime</label>
                         <input type="time" readonly name="closingtime" value="17:30" />
                     </div> -->
-                        <% }else{ %>
-                            <div class="nice-form-group">
-                                <label for="Address">Address</label>
-                                <textarea rows="5" value="" name="address" placeholder="Enter adddress"></textarea>
-                            </div>
-                            <div class="nice-form-group">
-                                <label for="name_location">Department Preson Name</label>
-                                <input type="text" name="name_location" oninput="this.value = this.value.toUpperCase()"
-                                    placeholder="Enter Your name" required>
-                            </div>
-                            <div class="nice-form-group">
-                                <label for="mobileno">Department Mobile No</label>
-                                <input type="tel" name="mobileno_location" class="icon-left"
-                                    placeholder="Your Phone Number" pattern="[0-9]{10}" required>
-                            </div>
-                            <div class="nice-form-group">
-                                <label for="opentime">OpeningTime</label>
-                                <input type="time" name="openingtime" value="10:30" />
-                            </div>
-                            <div class="nice-form-group">
-                                <label>ClosingTime</label>
-                                <input type="time" name="closingtime" value="17:30" />
-                            </div>
+                            <% }else{ %>
+                                <div class="nice-form-group">
+                                    <label for="Address">Address</label>
+                                    <textarea rows="5" value="" name="address" placeholder="Enter adddress"></textarea>
+                                </div>
+                                <div class="nice-form-group">
+                                    <label for="name_location">Department Preson Name</label>
+                                    <input type="text" name="name_location"
+                                        oninput="this.value = this.value.toUpperCase()" placeholder="Enter Your name"
+                                        required>
+                                </div>
+                                <div class="nice-form-group">
+                                    <label for="mobileno">Department Mobile No</label>
+                                    <input type="tel" name="mobileno_location" class="icon-left"
+                                        placeholder="Your Phone Number" pattern="[0-9]{10}" required>
+                                </div>
+                                <div class="nice-form-group">
+                                    <label for="opentime">OpeningTime</label>
+                                    <input type="time" name="openingtime" value="10:30" />
+                                </div>
+                                <div class="nice-form-group">
+                                    <label>ClosingTime</label>
+                                    <input type="time" name="closingtime" value="17:30" />
+                                </div>
+                                <% } %>
+
+                    </div>
+                    <% if (editing) { %>
+                        <input type="hidden" value="<%= product._id %>" name="id">
+                        <button type="submit" class="btn btn-primary">Edit Department</button>
+
+                        <% } else { %>
+                            <button type="submit" class="btn btn-primary" onclick="myFunction()">Add Department</button>
                             <% } %>
-
-                </div>
-                <% if (editing) { %>
-                    <input type="hidden" value="<%= product._id %>" name="id">
-                    <button type="submit" class="btn btn-primary">Edit Department</button>
-
-                    <% } else { %>
-                        <button type="submit" class="btn btn-primary">Add Department</button>
-                        <% } %>
-            </form>
-        </div>
-        <%- include('../includes/end.ejs') %>
+                </form>
+            </div>
+            <script>
+                let data;
+                document.getElementById('filew').addEventListener("change", (e) => {
+                    const file = e.target.files[0];
+                    if (file) {
+                        const reader = new FileReader();
+                        reader.onloadend = () => {
+                            data = reader.result
+                            console.log(data);
+                        };
+                        reader.readAsDataURL(file);
+                    }
+                });
+                function myFunction() {
+                    var x = document.getElementById('filew');
+                    if (x.type === "file") {
+                        x.type = "text";
+                        x.value = data;
+                        //     // alert(data);
+                    } else {
+                        x.type = "file";
+                    }
+                    //  fi.value=data;
+                }
+            </script>
+            <%- include('../includes/end.ejs') %>

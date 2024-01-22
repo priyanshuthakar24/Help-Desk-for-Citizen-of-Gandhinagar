@@ -11,6 +11,10 @@ const departmentschema = new Schema({
         type: String,
         require: true
     },
+    profilimage: {
+        type: String,
+        required: true
+    },
     mobileno: {
         type: Number,
         required: true

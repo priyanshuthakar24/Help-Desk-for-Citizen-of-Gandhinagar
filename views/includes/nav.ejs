@@ -1,3 +1,52 @@
+<style type="text/css">
+    .VIpgJd-ZVi9od-aZ2wEe-wOHMyf {
+        z-index: 9724790009779 !important;
+        top: 0;
+        left: unset;
+        right: -5px;
+        display: none !important;
+        border-radius: 50%;
+        border: 2px solid gold;
+    }
+
+    .VIpgJd-ZVi9od-aZ2wEe-OiiCO {
+        width: 80px;
+        height: 80px;
+    }
+
+    /*hide google translate link | logo | banner-frame */
+    .goog-logo-link,
+    .gskiptranslate,
+    .goog-te-gadget span,
+    .goog-te-banner-frame,
+    #goog-gt-tt,
+    .goog-te-balloon-frame,
+    div#goog-gt- {
+        display: none !important;
+    }
+
+    .goog-te-gadget {
+        color: transparent !important;
+        font-size: 0px;
+    }
+
+    .goog-text-highlight {
+        background: none !important;
+        box-shadow: none !important;
+    }
+
+    /*google translate Dropdown */
+
+    #google_translate_element select {
+        background: #226887;
+        color: #f6edfd;
+        font-size: large;
+        border: none;
+        border-radius: 3px;
+        padding: 6px 8px
+    }
+</style>
+
 <section id="header">
     <div class="main-logo logos">
         <a href="/"><img src="/img/Gandhinagar-01.png" alt="" class="logu"></a>
@@ -7,6 +56,9 @@
         <ul id="navbar">
             <li><a href="/">Home</a></li>
             <a href="#" id="close"><i class="fa-solid fa-circle-xmark"></i></a>
+            <div class="googlewrapper">
+                <div id="google_translate_element"></div>
+            </div>
         </ul>
     </div>
     <div id="mobile">

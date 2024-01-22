@@ -24,14 +24,14 @@ exports.getdata = (req, res, next) => {
 exports.getjobnews = (req, res, next) => {
     const eventdat = req.body.newstype;
     Eventdata.find({ catagory: eventdat }).then(data => {
-        res.render('user/announcement', { dataresult: data, pagetitle: 'Job Announcement' });
+        res.render('user/announcement', { dataresult: data, pagetitle: 'Job Announcement', headtitle: 'Job Alert' });
         console.log(data);
     }).catch(err => { console.log(err) });
 }
 exports.getculturenews = (req, res, next) => {
     const eventdat = req.body.newstype;
     Eventdata.find({ catagory: eventdat }).then(data => {
-        res.render('user/announcement', { dataresult: data, pagetitle: 'Culture Annoncement' });
+        res.render('user/announcement', { dataresult: data, pagetitle: 'Culture Annoncement', headtitle: 'Event Alert' });
         console.log(data);
     }).catch(err => { console.log(err) });
 }

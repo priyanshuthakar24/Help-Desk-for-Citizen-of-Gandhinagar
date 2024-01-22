@@ -16,6 +16,7 @@ exports.postData = (req, res, next) => {
     const mobileno = req.body.mobileno;
     const email = req.body.email
     const url = req.body.url;
+    const imageurl = req.body.imageurl;
     const address = req.body.address;
     const name_location = req.body.name_location;
     const mobileno_location = req.body.mobileno_location;
@@ -23,7 +24,7 @@ exports.postData = (req, res, next) => {
     const closingtime = req.body.closingtime;
     Dept.findOne({ email: email }).then(result => {
         const data = new Dept({
-            building: buildingname, name: name, mobileno: mobileno, email: email, url: url, locations: [{ address: address, personname: name_location, opentime: openingtime, closetime: closingtime, mobilenolocation: mobileno_location }]
+            building: buildingname, name: name, mobileno: mobileno, email: email, url: url, profilimage: imageurl, locations: [{ address: address, personname: name_location, opentime: openingtime, closetime: closingtime, mobilenolocation: mobileno_location }]
         })
         return data.save();
     }).then(result => {

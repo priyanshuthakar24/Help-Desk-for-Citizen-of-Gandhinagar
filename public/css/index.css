@@ -198,6 +198,7 @@ body {
     padding-right: 25px;
 }
 
+
 @media(max-width:779px) {
     .main-container {
         display: grid;

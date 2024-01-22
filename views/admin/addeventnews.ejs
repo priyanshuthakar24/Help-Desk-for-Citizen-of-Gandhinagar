@@ -8,7 +8,7 @@
             <h1>Add event list</h1>
         </div>
         <div class="eventlist">
-            <form action="/admin/<% if (editing) { %>editednewsinfo<% }else{ %> addevent <% } %> " method="post"
+            <form action="/admin/<%if(editing){%>editednewsinfo<%}else{%>addevent<%}%>" method="post"
                 class="product-form">
                 <div class="nice-form-group">
                     <label for="typeofnews">Select Type</label>
@@ -49,7 +49,7 @@
                                                 <%}%>
                                                     <button class="btn btn-primary " type="submit"
                                                         onclick="myFunction()">
-                                                        <% if(editing){%>EditNews<%}else{%> Add News <%}%>
+                                                        <% if(editing){%>EditNews<%}else{%>Add News<%}%>
                                                     </button>
                                                     <!-- <input type="text" name="buildingname" oninput="this.value = this.value.toUpperCase()"
                     placeholder="Enter Your name" required> -->

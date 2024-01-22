@@ -1,13 +1,48 @@
 <%- include('../includes/head.ejs') %>
+    <style>
+        .news {
+            margin: 1rem;
+            display: flex;
+        }
+
+        .desc {
+            margin-left: 1rem;
+        }
+
+        @media(max-width:530px) {
+            .news {
+                flex-direction: column;
+            }
+
+            .attachment {
+                justify-content: center;
+                align-items: center;
+            }
+        }
+    </style>
     </head>
 
     <body>
-        <h1>News Announcement</h1>
-        <div class="news">
-            <% for(let key of dataresult){ %>
+        <%- include('../includes/nav.ejs') %>
+            <div class="header1 nine">
                 <h1>
-                    <%= key.eventname %>
+                    <%= headtitle %> <span>~</span>
                 </h1>
+            </div>
+            <% for(let key of dataresult){ %>
+                <div class="news">
+                    <div class="attachment">
+                        <embed src="<%= key.attachment %>" width="250" height="250" />
+                    </div>
+                    <div class="desc">
+                        <h2>
+                            <%= key.eventname %>
+                        </h2>
+                        <p>
+                            <%= key.descrtption %>
+                        </p>
+                    </div>
+                </div>
+                <hr>
                 <% } %>
-        </div>
-        <%- include('../includes/end.ejs') %>
+                    <%- include('../includes/end.ejs') %>

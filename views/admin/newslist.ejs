@@ -1,43 +1,43 @@
 <%- include('../includes/head.ejs') %>
-</head>
+    </head>
 
-<body>
+    <body>
         <%- include('../includes/anav.ejs') %>
-        <div class="nine">
-            <h1>News List</h1>
-        </div>
-        <% for(let key of listdata){ %>
-            <p>
-                <%= key.list %>
-            </p>
-            <p>
-                <%= key.eventname %>:
-                    <%= key.descrtption %>
-            </p>
-            <div class="main-container">
-                <div class="item">
-                    <div class="item-1">
-                        <form action="/admin/editnewsinfo" method="post">
-                            <input type="hidden" value="<%= key._id %>" name="id">
-                            <button>
-                                <i class="fa-solid fa-pen-to-square" style="font-size: 2rem;"> edit</i>
-                            </button>
-                        </form>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="item-1">
-                        <form action="/admin/removenews" method="post">
-                            <input type="hidden" value="<%= key._id %>" name="id">
-                            <button type="submit">
-                                <i class="fa-solid fa-trash" style="font-size: 1.5rem;"> Remove</i>
-                            </button>
-                        </form>
-                    </div>
-                </div>
+            <div class="nine">
+                <h1>News List</h1>
             </div>
-            <hr>
-            <% } %>
+            <% for(let key of listdata){ %>
+                <p>
+                    <%= key.list %>
+                </p>
+                <p>
+                    <%= key.eventname %>:
+                        <%= key.descrtption %>
+                </p>
+                <div class="main-container">
+                    <div class="item">
+                        <div class="item-1">
+                            <form action="/admin/editnewsinfo" method="post">
+                                <input type="hidden" value="<%= key._id %>" name="id">
+                                <button>
+                                    <i class="fa-solid fa-pen-to-square" style="font-size: 2rem;"> edit</i>
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="item-1">
+                            <form action="/admin/removenews" method="post">
+                                <input type="hidden" value="<%= key._id %>" name="id">
+                                <button type="submit">
+                                    <i class="fa-solid fa-trash" style="font-size: 1.5rem;"> Remove</i>
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <% } %>
     </body>
 
     <%- include('../includes/end.ejs') %>

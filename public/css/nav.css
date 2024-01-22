@@ -142,6 +142,8 @@ span {
     display: none;
 }
 
+
+
 @media(max-width:799px) {
 
 
@@ -201,10 +203,11 @@ span {
 }
 
 @media(max-width:550px) {
-   
+
     #header {
         padding: 10px 20px;
     }
+
     .logo {
         display: none;
     }
@@ -219,7 +222,7 @@ span {
         height: 70%;
         width: 90%;
     }
-   
+
 }
 
 .btn {
