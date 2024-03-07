@@ -1,30 +1,33 @@
 const express = require('express');
 const router = express.Router();
 const admincontroller = require('../controllers/admin');
+const isAuth = require('../middleware/is-auth');
 const { route } = require('./user');
 
 
-router.get('/home', admincontroller.getindex);
-router.get('/adddept', admincontroller.getadddeptform)
-router.post('/deptdata', admincontroller.postData);
-router.get('/addlocation', admincontroller.getaddlocation);
-router.post('/locationdata', admincontroller.postdeptdata);
-router.get('/addsolution', admincontroller.getsolution);
-router.post('/addsolution', admincontroller.postsolution)
-router.get('/addattachment', admincontroller.getattachment);
-router.post('/addattachment', admincontroller.postattachment);
-router.get('/addevent', admincontroller.getevent);
-router.post('/addevent', admincontroller.postevent);
-router.get('/editdept', admincontroller.geteditlist);
-router.post('/editdept', admincontroller.posteditform);
-router.post('/editdetail', admincontroller.posteditdata);
-router.get('/editnews', admincontroller.getnewslist);
-router.post('/editnewsinfo', admincontroller.getnewsinfo);
-router.post('/editednewsinfo', admincontroller.posteditnews);
-router.post('/removenews', admincontroller.removenews);
-router.get('/editsolution', admincontroller.geteditfaq);
-router.post('/faqlist', admincontroller.getfaqlist);
-router.post('/editfaq', admincontroller.geteditfaqform);
-router.post('/postfaqedit', admincontroller.posteditfaqform);
-router.post('/removefaq', admincontroller.removefaq);
+router.get('/home', isAuth, admincontroller.getindex);
+router.get('/adddept', isAuth, admincontroller.getadddeptform)
+router.post('/deptdata', isAuth, admincontroller.postData);
+router.get('/addlocation', isAuth, admincontroller.getaddlocation);
+router.post('/locationdata', isAuth, admincontroller.postdeptdata);
+router.get('/addsolution', isAuth, admincontroller.getsolution);
+router.post('/addsolution', isAuth, admincontroller.postsolution)
+router.get('/addattachment', isAuth, admincontroller.getattachment);
+router.post('/addattachment', isAuth, admincontroller.postattachment);
+router.get('/addevent', isAuth, admincontroller.getevent);
+router.post('/addevent', isAuth, admincontroller.postevent);
+router.get('/editdept', isAuth, admincontroller.geteditlist);
+router.post('/editdept', isAuth, admincontroller.posteditform);
+router.post('/editdetail', isAuth, admincontroller.posteditdata);
+router.get('/editnews', isAuth, admincontroller.getnewslist);
+router.post('/editnewsinfo', isAuth, admincontroller.getnewsinfo);
+router.post('/editednewsinfo', isAuth, admincontroller.posteditnews);
+router.post('/removenews', isAuth, admincontroller.removenews);
+router.get('/editsolution', isAuth, admincontroller.geteditfaq);
+router.post('/faqlist', isAuth, admincontroller.getfaqlist);
+router.post('/editfaq', isAuth, admincontroller.geteditfaqform);
+router.post('/postfaqedit', isAuth, admincontroller.posteditfaqform);
+router.post('/removefaq', isAuth, admincontroller.removefaq);
+router.get('/newsdata', isAuth, admincontroller.newsdata);
+router.post('/removeusernews', isAuth, admincontroller.removenewsdata);
 module.exports = router;

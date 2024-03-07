@@ -1,6 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@200;400;700&display=swap');
 
+:root {
+    --my--color: #0090ba;
+}
+
 body {
     margin: 0;
     padding: 0;
@@ -159,8 +163,8 @@ body {
     display: block;
     border-bottom: 1px solid #ccc;
     border-top: 1px solid #ccc;
-    height: 5px;
-    background-color: #0090ba;
+    height: 2px;
+    background-color: var(--my--color);
 }
 
 /* main-container of student css  0.0.00.0.0.0.0.0.0.*/
@@ -198,19 +202,69 @@ body {
     padding-right: 25px;
 }
 
+.main-address {
+    margin-left: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+}
 
-@media(max-width:779px) {
+.address {
+    margin-left: 1rem;
+}
+
+.pimage img {
+    height: 10rem;
+    width: 20rem;
+    border-radius: 5px;
+}
+
+.pheading {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+
+.heading {
+    margin-left: 10px;
+    align-self: center;
+}
+
+#main-image img {
+    height: 6rem;
+    width: 13rem;
+}
+
+/* ======================================================== */
+
+
+/* ============================== */
+@media(max-width:820px) {
     .main-container {
         display: grid;
         grid-template-columns: auto;
         grid-gap: 2rem;
     }
+
+    .pimage img {
+        width: 18rem;
+    }
 }
 
 @media(max-width:550px) {
+    .item .item-1 button {
+        font-size: 15px;
+    }
+
     .header1 h1 {
         font-size: 32px;
     }
+
+    .pimage img {
+        width: 14rem;
+    }
+
+
 }
 
 /* .main-container {

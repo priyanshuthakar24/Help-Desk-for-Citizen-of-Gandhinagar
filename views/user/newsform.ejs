@@ -1,0 +1,66 @@
+<%- include('../includes/head.ejs') %>
+    <link rel="stylesheet" href="/css/form.css">
+    </head>
+
+    <body>
+        <%- include('../includes/nav.ejs') %>
+            <div class="header1">
+                <h1>Add News</h1>
+            </div>
+            <div class="eventlist">
+                <form action="/submitnews" method="post" class="product-form">
+                    <div class="nice-form-group">
+                        <label for="mobileno">Whats Mobile No</label>
+                        <input type="tel" name="mobileno" class="icon-left" placeholder="Your Phone Number"
+                            pattern="[0-9]{10}" required>
+                    </div>
+                    <div class="nice-form-group">
+                        <label for="name">Heading name </label>
+                        <input type="text" name="headingname" oninput="this.value = this.value.toUpperCase()" required
+                            placeholder="Enter Your name" required>
+                    </div>
+                    <div class="nice-form-group">
+                        <label for="description">Description</label>
+                        <textarea rows="5" value="" name="description" placeholder="Enter solution"></textarea>
+                    </div>
+
+                    <div class="nice-form-group">
+                        <label for="marksheet">Attachment</label>
+                        <input type="file" id="filew" name="attachmentlink" required>
+                    </div>
+
+                    <input type="hidden" name="_csrf" id="" value="<%= csrfToken %>">
+                    <button class="btn btn-primary " type="submit" onclick="myFunction()">
+                        Add News
+                    </button>
+                    <!-- <input type="text" name="buildingname" oninput="this.value = this.value.toUpperCase()"
+                    placeholder="Enter Your name" required> -->
+            </div>
+            </form>
+
+            <script>
+                let data;
+                document.getElementById('filew').addEventListener("change", (e) => {
+                    const file = e.target.files[0];
+                    if (file) {
+                        const reader = new FileReader();
+                        reader.onloadend = () => {
+                            data = reader.result
+                            console.log(data);
+                        };
+                        reader.readAsDataURL(file);
+                    }
+                });
+                function myFunction() {
+                    var x = document.getElementById('filew');
+                    if (x.type === "file") {
+                        x.type = "text";
+                        x.value = data;
+                        //     // alert(data);
+                    } else {
+                        x.type = "file";
+                    }
+                    //  fi.value=data;
+                }
+            </script>
+            <%- include('../includes/end.ejs') %>

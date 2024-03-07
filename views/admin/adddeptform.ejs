@@ -56,13 +56,17 @@
                             value="<% if (editing) {%><%=product.url %><%}else{%><%= olddata.url%><%}%>"
                             class="icon-left" />
                     </div>
-                    <div class="nice-form-group">
-                        <label for="imageurl">Icon Image</label>
-                        <input type="file" id="filew" name="imageurl" required>
-                    </div>
-                    <div class="editingcon">
-                        <% if (editing) { %>
-                            <!-- <div class="nice-form-group">
+                    <% if (editing) { %>
+
+                        <% } else{%>
+                            <div class="nice-form-group">
+                                <label for="imageurl">Icon Image</label>
+                                <input type="file" id="filew" name="imageurl" required>
+                            </div>
+                            <% } %>
+                                <div class="editingcon">
+                                    <% if (editing) { %>
+                                        <!-- <div class="nice-form-group">
                         <label for="Address">Address</label>
                         <% if (editing) {%>
                             <textarea rows="5" value="<%= product.address %>" name="address" readonly
@@ -90,40 +94,44 @@
                         <label>ClosingTime</label>
                         <input type="time" readonly name="closingtime" value="17:30" />
                     </div> -->
-                            <% }else{ %>
-                                <div class="nice-form-group">
-                                    <label for="Address">Address</label>
-                                    <textarea rows="5" value="" name="address" placeholder="Enter adddress"></textarea>
-                                </div>
-                                <div class="nice-form-group">
-                                    <label for="name_location">Department Preson Name</label>
-                                    <input type="text" name="name_location"
-                                        oninput="this.value = this.value.toUpperCase()" placeholder="Enter Your name"
-                                        required>
-                                </div>
-                                <div class="nice-form-group">
-                                    <label for="mobileno">Department Mobile No</label>
-                                    <input type="tel" name="mobileno_location" class="icon-left"
-                                        placeholder="Your Phone Number" pattern="[0-9]{10}" required>
-                                </div>
-                                <div class="nice-form-group">
-                                    <label for="opentime">OpeningTime</label>
-                                    <input type="time" name="openingtime" value="10:30" />
-                                </div>
-                                <div class="nice-form-group">
-                                    <label>ClosingTime</label>
-                                    <input type="time" name="closingtime" value="17:30" />
-                                </div>
-                                <% } %>
+                                        <% }else{ %>
+                                            <div class="nice-form-group">
+                                                <label for="Address">Address</label>
+                                                <textarea rows="5" value="" name="address"
+                                                    placeholder="Enter address"></textarea>
+                                            </div>
+                                            <div class="nice-form-group">
+                                                <label for="name_location">Department Person Name</label>
+                                                <input type="text" name="name_location"
+                                                    oninput="this.value = this.value.toUpperCase()"
+                                                    placeholder="Enter Your name" required>
+                                            </div>
+                                            <div class="nice-form-group">
+                                                <label for="mobileno">Department Mobile No</label>
+                                                <input type="tel" name="mobileno_location" class="icon-left"
+                                                    placeholder="Your Phone Number" pattern="[0-9]{10}" required>
+                                            </div>
+                                            <div class="nice-form-group">
+                                                <label for="opentime">OpeningTime</label>
+                                                <input type="time" name="openingtime" value="10:30" />
+                                            </div>
+                                            <div class="nice-form-group">
+                                                <label>ClosingTime</label>
+                                                <input type="time" name="closingtime" value="17:30" />
+                                            </div>
+                                            <% } %>
 
-                    </div>
-                    <% if (editing) { %>
-                        <input type="hidden" value="<%= product._id %>" name="id">
-                        <button type="submit" class="btn btn-primary">Edit Department</button>
+                                </div>
+                                <% if (editing) { %>
+                                    <input type="hidden" name="_csrf" id="" value="<%= csrfToken %>">
+                                    <input type="hidden" value="<%= product._id %>" name="id">
+                                    <button type="submit" class="btn btn-primary">Edit Department</button>
 
-                        <% } else { %>
-                            <button type="submit" class="btn btn-primary" onclick="myFunction()">Add Department</button>
-                            <% } %>
+                                    <% } else { %>
+                                        <input type="hidden" name="_csrf" id="" value="<%= csrfToken %>">
+                                        <button type="submit" class="btn btn-primary" onclick="myFunction()">Add
+                                            Department</button>
+                                        <% } %>
                 </form>
             </div>
             <script>

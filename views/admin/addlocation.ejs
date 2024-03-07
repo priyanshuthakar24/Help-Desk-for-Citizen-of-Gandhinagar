@@ -1,39 +1,40 @@
 <%- include('../includes/head.ejs') %>
-<link rel="stylesheet" href="/css/form.css">
-</head>
+    <link rel="stylesheet" href="/css/form.css">
+    </head>
 
-<body>
+    <body>
         <%- include('../includes/anav.ejs') %>
-        <div class="header1">
-            <h1>Add Location</h1>
-        </div>
-        <form action="/admin/locationdata" method="post" class="product-form">
-            <div class="nice-form-group">
-                <label for="email">Email</label>
-                <input type="email" name="email" class="icon-left" placeholder="www.xyz.com" required>
+            <div class="header1">
+                <h1>Add Location</h1>
             </div>
-            <div class="nice-form-group">
-                <label for="Address">Address</label>
-                <textarea rows="5" value="" name="address" placeholder="Enter adddress"></textarea>
-            </div>
-            <div class="nice-form-group">
-                <label for="name">Preson Name</label>
-                <input type="text" name="name" oninput="this.value = this.value.toUpperCase()"
-                    placeholder="Enter Your name" required>
-            </div>
-            <div class="nice-form-group">
-                <label for="mobileno">Mobile No</label>
-                <input type="tel" name="mobileno" class="icon-left" placeholder="Your Phone Number" pattern="[0-9]{10}"
-                    required>
-            </div>
-            <div class="nice-form-group">
-                <label for="opentime">OpeningTime</label>
-                <input type="time" name="openingtime" value="10:00" />
-            </div>
-            <div class="nice-form-group">
-                <label>ClosingTime</label>
-                <input type="time" name="closingtime" value="17:30" />
-            </div>
-            <button type="submit" class="btn btn-primary">Add Department</button>
-        </form>
-        <%- include('../includes/end.ejs') %>
+            <form action="/admin/locationdata" method="post" class="product-form">
+                <div class="nice-form-group">
+                    <label for="email">Email</label>
+                    <input type="email" name="email" class="icon-left" placeholder="www.xyz.com" required>
+                </div>
+                <div class="nice-form-group">
+                    <label for="Address">Address</label>
+                    <textarea rows="5" value="" name="address" placeholder="Enter adddress"></textarea>
+                </div>
+                <div class="nice-form-group">
+                    <label for="name">Preson Name</label>
+                    <input type="text" name="name" oninput="this.value = this.value.toUpperCase()"
+                        placeholder="Enter Your name" required>
+                </div>
+                <div class="nice-form-group">
+                    <label for="mobileno">Mobile No</label>
+                    <input type="tel" name="mobileno" class="icon-left" placeholder="Your Phone Number"
+                        pattern="[0-9]{10}" required>
+                </div>
+                <div class="nice-form-group">
+                    <label for="opentime">OpeningTime</label>
+                    <input type="time" name="openingtime" value="10:00" />
+                </div>
+                <div class="nice-form-group">
+                    <label>ClosingTime</label>
+                    <input type="time" name="closingtime" value="17:30" />
+                </div>
+                <input type="hidden" name="_csrf" id="" value="<%= csrfToken %>">
+                <button type="submit" class="btn btn-primary">Add Department</button>
+            </form>
+            <%- include('../includes/end.ejs') %>

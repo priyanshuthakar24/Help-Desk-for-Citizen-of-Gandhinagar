@@ -19,6 +19,7 @@
                 <div class="item">
                     <div class="item-1">
                         <form action="/admin/editfaq" method="post">
+                            <input type="hidden" name="_csrf" id="" value="<%= csrfToken %>">
                             <input type="hidden" value="<%= key._id %>" name="id">
                             <input type="hidden" value="<%= keydata._id %>" name="kid">
                             <button><i class="fa-solid fa-pen-to-square" style="font-size:2rem;"> Edit</i>
@@ -31,6 +32,7 @@
 
                     <div class="item-1">
                         <form action="/admin/removefaq" method="post">
+                            <input type="hidden" name="_csrf" id="" value="<%= csrfToken %>">
                             <input type="hidden" value="<%= key._id %>" name="id">
                             <input type="hidden" value="<%= keydata._id %>" name="fid">
                             <button type="submit">

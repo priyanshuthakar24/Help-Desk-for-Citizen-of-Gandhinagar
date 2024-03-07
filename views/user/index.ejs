@@ -15,6 +15,7 @@
                             <div class="item-1">
                                 <form action="/dept" method="post">
                                     <input type="hidden" value="GMC" name="building">
+                                    <input type="hidden" name="_csrf" id="" value="<%= csrfToken %>">
                                     <button type="submit" class="btn-login"><img src="/img/Gandhinagar-01.png" alt="">
                                         <div class="detail">
                                             <h3>Gmc</h3>
@@ -25,19 +26,20 @@
                         </div>
                         <div class="item">
                             <div class="item-1">
-                                <button class="btn-login"><i class="fa-duotone fa-building"></i>
-                                    <div class="detail">
-                                        <h3>karmyogi bhavn</h3>
+
+                                <button class="btn-login">
+                                    <div id="main-image">
+                                        <img src="/img/sachivalay.jpg" alt="">
                                     </div>
-                                </button>
+                                    <h3>Sachivalaya</h3>
                             </div>
                         </div>
                         <div class="item">
                             <div class="item-1">
                                 <form action="/jobnews" method="post">
+                                    <input type="hidden" name="_csrf" id="" value="<%= csrfToken %>">
                                     <input type="hidden" value="job" name="newstype">
                                     <button type="submit" class="btn-login"><i class="fa-regular fa-bullhorn"></i>
-
                                         <h3> &nbsp; &nbsp; &nbsp; &nbsp;Job Alert
                                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h3>
                                     </button>
@@ -47,6 +49,7 @@
                         <div class="item">
                             <div class="item-1">
                                 <form action="/culturenews" method="post">
+                                    <input type="hidden" name="_csrf" id="" value="<%= csrfToken %>">
                                     <input type="hidden" value="cevent" name="newstype">
                                     <button type="submit" class="btn-login"><i
                                             class="fa-sharp fa-light fa-scroll-old"></i>
@@ -57,6 +60,16 @@
                                             Alert&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h3>
                                     </button>
                                 </form>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="item-1">
+                                <a href="/submitnews">
+                                    <button><i class="fa-duotone fa-file-circle-plus"></i>
+                                        <h3>&nbsp; &nbsp; &nbsp;Add News&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        </h3>
+                                    </button>
+                                </a>
                             </div>
                         </div>
                         <!-- <div class="options">

@@ -6,7 +6,15 @@
     <div>
         <ul id="navbar">
             <li><a href="/admin/home">Home</a></li>
-            <a href="#" id="close"><i class="fa-solid fa-circle-xmark"></i></a>
+            <% if(isAuthenticated){%>
+                <li>
+                    <form action="/admin/logout" method="post">
+                        <input type="hidden" name="_csrf" id="" value="<%= csrfToken %>">
+                        <button type="submit" class="btn btn-primary">Logout</button>
+                    </form>
+                </li>
+                <%}%>
+                    <a href="#" id="close"><i class="fa-solid fa-circle-xmark"></i></a>
         </ul>
     </div>
     <div id="mobile">

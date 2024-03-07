@@ -18,6 +18,7 @@
                     <div class="item">
                         <div class="item-1">
                             <form action="/admin/editnewsinfo" method="post">
+                                <input type="hidden" name="_csrf" id="" value="<%= csrfToken %>">
                                 <input type="hidden" value="<%= key._id %>" name="id">
                                 <button>
                                     <i class="fa-solid fa-pen-to-square" style="font-size: 2rem;"> edit</i>
@@ -28,6 +29,7 @@
                     <div class="item">
                         <div class="item-1">
                             <form action="/admin/removenews" method="post">
+                                <input type="hidden" name="_csrf" id="" value="<%= csrfToken %>">
                                 <input type="hidden" value="<%= key._id %>" name="id">
                                 <button type="submit">
                                     <i class="fa-solid fa-trash" style="font-size: 1.5rem;"> Remove</i>

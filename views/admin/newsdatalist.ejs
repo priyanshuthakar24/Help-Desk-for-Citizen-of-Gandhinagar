@@ -1,0 +1,62 @@
+<%- include('../includes/head.ejs') %>
+    <style>
+        .news {
+            margin: 1rem;
+            display: flex;
+        }
+
+        .desc {
+            margin-left: 1rem;
+        }
+
+        @media(max-width:530px) {
+            .news {
+                flex-direction: column;
+            }
+
+            .attachment {
+                justify-content: center;
+                align-items: center;
+            }
+        }
+    </style>
+    </head>
+
+    <body>
+        <%- include('../includes/anav.ejs') %>
+            <div class="header1 nine">
+                <h1>
+                    <%= headtitle %> <span>~</span>
+                </h1>
+            </div>
+            <% for(let key of dataresult){ %>
+                <div class="news">
+                    <div class="attachment">
+                        <embed src="<%= key.attachment %>" width="250" height="250" />
+                    </div>
+                    <div class="desc">
+                        <h2>
+                            <%= key.eventname %>
+                        </h2>
+                        <p>
+                            <%= key.descrtption %>
+                        </p>
+                        <p>
+                            <i class="fa-light fa-mobile fa-bounce"></i> : <%= key.mobileno %>
+                        </p>
+                        <!-- <div class="item"> -->
+                        <div class="item-1">
+                            <form action="/admin/removeusernews" method="post">
+                                <input type="hidden" name="_csrf" id="" value="<%= csrfToken %>">
+                                <input type="hidden" value="<%= key._id %>" name="id">
+                                <button type="submit" class="btn btn-primary">
+                                    <i class="fa-solid fa-trash"></i> Remove
+                                </button>
+                            </form>
+                        </div>
+                        <!-- </div> -->
+                    </div>
+                </div>
+                <hr>
+                <% } %>
+                    <%- include('../includes/end.ejs') %>

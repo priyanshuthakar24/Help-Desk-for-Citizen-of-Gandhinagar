@@ -29,10 +29,12 @@
                             placeholder="Enter solution"><% if (editing) {  %><%= product[0].solution %><%}else{ %><%= olddata.solution %><%}%></textarea>
                     </div>
                     <% if (editing) { %>
+                        <input type="hidden" name="_csrf" id="" value="<%= csrfToken %>">
                         <input type="hidden" value="<%= product[0]._id %>" name="id">
                         <input type="hidden" value="<%= product[0].id %>" name="qid">
                         <button type="submit" class="btn btn-primary">Edit Solution</button>
                         <% } else{%>
+                            <input type="hidden" name="_csrf" id="" value="<%= csrfToken %>">
                             <button type="submit" class="btn btn-primary">Add Solution</button>
                             <% } %>
                 </form>

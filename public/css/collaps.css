@@ -2,10 +2,11 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: sans-serif;
+  /* font-family: sans-serif; */
   line-height: 1.5;
 }
 
+/* overflow-x: hidden; */
 body {
   background-color: #f1f1f1;
 }
@@ -40,7 +41,7 @@ details {
 
   /* // Custom marker */
   summary::after {
-    content: "+";
+    content: '+';
     font-size: 1.5rem;
     font-weight: 400;
     line-height: 1;

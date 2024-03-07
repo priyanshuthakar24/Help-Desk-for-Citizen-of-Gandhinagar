@@ -1,5 +1,10 @@
 <%- include('../includes/head.ejs') %>
     <link rel="stylesheet" href="/css/collaps.css">
+    <style>
+        .myborder {
+            --my--color: red;
+        }
+    </style>
     </head>
 
     <body>
@@ -9,7 +14,13 @@
 
                 <div class="header1 nine">
                     <h1>
-                        <%= deptinfo.name%> <span>~</span>
+                        <div class="pimage pheading">
+                            <img src="<%= deptinfo.profilimage %>" alt="">
+                            <div class="heading">
+                                <%= deptinfo.name%>
+                            </div>
+                        </div>
+                        <span>About</span>
                     </h1>
                     <h3>
                         &nbsp;&nbsp;&nbsp;<i class="fa-duotone fa-phone-rotary"></i>&nbsp; : +91 <%= deptinfo.mobileno
@@ -23,25 +34,36 @@
                             <%= deptinfo.url %>
                         </a>
                     </h3>
-                    <h1><span>~</span></h1>
-                    <div class="bs">
+                    <h1><span class="myborder">Address</span></h1>
+                    <div class="main-address">
                         <% for( let key of deptinfo.locations) { %>
-                            <h2>
-                                <div class="detail">
-                                    location :<%= key.address%> <br> <br>
-                                        Contact Person : <%=key.personname%> <br><br>
-                                            Department contact : <%=key.mobilenolocation %> <br><br>
-                                                Open Time : <%=key.opentime%> <br><br>
-                                                    closing Time: <%=key.closetime%> <br><br>
-                                </div>
-                            </h2>
+                            <div class="address">
+                                <p>
+                                    <i class="fa-sharp fa-regular fa-location-dot fa-bounce"></i> : <%= key.address%>
+                                </p>
+                                <p>
+                                    <i class="fa-regular fa-user-headset"></i> : <%=key.personname%>
+                                </p>
+                                <p>
+                                    <i class="fa-regular fa-phone-office"></i> : +079-<%=key.mobilenolocation %>
+                                </p>
+
+                                <p>
+                                    <i class="fa-sharp fa-regular fa-clock-two"></i> : <%=key.opentime%> am
+                                </p>
+                                <p>
+                                    <i class="fa-sharp fa-regular fa-clock-five"></i> : <%=key.closetime%> pm
+                                </p><br>
+
+                            </div>&nbsp;&nbsp;&nbsp;&nbsp;
+
                             <%}%>
                     </div>
                     <h1><span>~</span></h1>
                 </div>
                 <div class="solution">
                     <div class="header1 nine">
-                        <h1>અપના પ્રશ્નો:-</h1>
+                        <h1>FAQ<span>your Questions</span></h1>
                     </div>
                     <% for( let keydata of deptinfo.query){%>
 
@@ -52,7 +74,7 @@
                             <div class="content">
                                 <p>
                                     <%= keydata.solution %>
-                                </p>
+                                </p><br>
 
                                 <% for(let keyvalue of keydata.attachment){%>
                                     <p>

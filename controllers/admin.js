@@ -1,6 +1,7 @@
 const department = require('../models/department');
 const Dept = require('../models/department');
 const Announcment = require('../models/eventdata');
+const NewsData = require('../models/newsdata');
 
 // home page loading function >>>>
 exports.getindex = (req, res, next) => {
@@ -282,6 +283,20 @@ exports.removefaq = (req, res, next) => {
 }
 //  Edit and Remove function for Faq iend ]]]]]]]]]]
 
+
+
+exports.newsdata = (req, res, next) => {
+    NewsData.find().then(data => {
+        res.render('admin/newsdatalist', { pagetitle: 'News List', headtitle: 'News List', dataresult: data });
+    })
+}
+exports.removenewsdata = (req, res, next) => {
+    const id = req.body.id;
+    NewsData.findByIdAndDelete(id).then(data => {
+        res.redirect('/admin/home');
+    }).catch(err => { console.log(err) });
+
+}
 
 // logic for add file in arry in attachment section
 // const qesdata = updatdata.filter(item => {

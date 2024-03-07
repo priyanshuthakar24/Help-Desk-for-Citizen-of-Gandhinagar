@@ -25,6 +25,7 @@
                     <label for="marksheet">Attachment</label>
                     <input type="file" id="filew" name="attachmentlink" required>
                 </div>
+                <input type="hidden" name="_csrf" id="" value="<%= csrfToken %>">
                 <button type="submit" onclick="myFunction()" class="btn btn-primary">Add Attachment</button>
             </form>
             <script>

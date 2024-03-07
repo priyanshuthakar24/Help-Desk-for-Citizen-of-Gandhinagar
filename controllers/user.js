@@ -1,5 +1,6 @@
 const Dept = require('../models/department');
 const Eventdata = require('../models/eventdata');
+const Newsdata = require('../models/newsdata');
 exports.getindex = (req, res, next) => {
     res.render('user/index', { pagetitle: 'Home' });
 }
@@ -34,4 +35,19 @@ exports.getculturenews = (req, res, next) => {
         res.render('user/announcement', { dataresult: data, pagetitle: 'Culture Annoncement', headtitle: 'Event Alert' });
         console.log(data);
     }).catch(err => { console.log(err) });
+}
+
+exports.getnewsform = (req, res, next) => {
+    res.render('user/newsform', { headtitle: 'NewsForm', editing: false, pagetitle: 'News form', olddata: { name: '', description: '' } });
+}
+
+exports.postnewsform = (req, res, next) => {
+    const mobileno = req.body.mobileno;
+    const headingname = req.body.headingname;
+    const description = req.body.description;
+    const attachment = req.body.attachmentlink;
+
+    const data = new Newsdata({ mobileno: mobileno, eventname: headingname, descrtption: description, attachment: attachment })
+    data.save();
+    return res.redirect('/');
 }

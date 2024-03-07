@@ -12,6 +12,7 @@
 
                         <div class="item-1">
                             <form action="/admin/<% if (editing) { %>faqlist<% }else{ %>editdept<% } %>" method="post">
+                                <input type="hidden" name="_csrf" id="" value="<%= csrfToken %>">
                                 <input type="hidden" value="<%= key.name %>" name="dname">
                                 <button type="submit">
                                     <h3>
